@@ -1,0 +1,35 @@
+/* Schriftarten */
+@font-face {
+    font-family: 'IndieFlower';
+    src: url('./font/IndieFlower/IndieFlower.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Majestic';
+    src: url('./font/MajesticPersonal/MajesticPersonalUseRegular-ZVP3B.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Choco';
+    src: url('./font/chocoladine/ChocoladineDemo.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Hunters';
+    src: url('./font/hunters/Hunters.otf');
+  }
+  
+  @font-face {
+    font-family: 'Stroke';
+    src: url('./font/infinite_stroke/Infinite_Stroke.otf');
+  }
+  
+  @font-face {
+    font-family: 'Grape';
+    src: url('./font/mister_grape/Mister\ Grape\ -\ Personal\ Use.otf');
+  }
+  
+  @font-face {
+    font-family: 'Rakoon';
+    src: url('./font/rakoon/Rakoon_PersonalUse.ttf');
+  }

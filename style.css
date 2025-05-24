@@ -1,0 +1,407 @@
+/* Grundlegende Stile */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  cursor: context-menu;
+}
+
+body {
+  background-image: url(./img/background/background3.png);
+  background-size: cover;
+  background-position: center;
+  font-family: 'IndieFlower', sans-serif;
+  position: relative;
+}
+
+/* Sektion */
+section {
+  height: 100svh;
+  width: 100svw;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.donut-name {
+  position: relative; /* Fügt Positionierung hinzu */
+  z-index: 100;
+  width: 80%;
+  height: 50%;
+  text-align: center;
+}
+
+.swipe-and-pick {
+  display: flex;
+  align-items: center; /* Damit alles schön vertikal ausgerichtet ist */
+  position: relative;
+}
+
+/* Add to Cart Button Styling - NEU */
+.add-to-cart-container {
+  position: relative;
+  margin: 24px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn {
+  width: 8vw !important;
+  transition: transform 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  transform: scale(1.1);
+}
+
+.swipe-and-pick img {
+  width: 8vw;
+}
+
+h1 {
+  font-family: 'Majestic';
+  font-weight: normal;
+  color: white;
+  font-size: clamp(24px, 8vw, 80px); /* Mindestens 24px, vorzugsweise 5vw, maximal 40px */
+  margin-top: 10%;
+}
+
+/* Donut-Info */
+.donut-info {
+  max-width: 90%;
+  height: 55%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: clamp(24px, 8vw, 80px); /* Mindestens 24px, vorzugsweise 5vw, maximal 40px */
+  color: #ed3e78;
+  background-color: white;
+  border-radius: 16px;
+  padding: 8px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  line-height: 1;
+  width: 80vw;
+}
+
+p {
+  font-size: clamp(2vw, 4vw, 6vw); /* Mindestens 24px, vorzugsweise 5vw, maximal 40px */
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  line-height: 2;
+}
+
+/* Donutrad */
+.grid-container {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150vw;
+  height: 150vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  /* pointer-events: none; */ /* Entfernt, um Interaktion zu ermöglichen */
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 2s ease-out; /* Fügt eine Transition hinzu */
+  animation: rotateWheel 1s linear infinite;
+}
+
+/* @keyframes rotateWheel {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+} */
+
+/* Neue Animation für die Donut-Bilder */
+@keyframes rotateDonuts {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.grid-item {
+  position: relative;
+}
+
+.grid-item img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Startposition */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  /* Hinzufügen der gegenläufigen Rotation */
+  animation: rotateDonuts 15s linear infinite;
+}
+
+/* === WARENKORB STYLES - NEU === */
+
+/* Warenkorb rechts oben */
+.top-right-cart {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 200;
+}
+
+.cart-icon-container {
+  position: relative;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  padding: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+
+.cart-icon-container:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.cart-icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); /* Macht das Icon weiß */
+  transition: transform 0.2s ease;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: white;
+  color: #ed3e78;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(237, 62, 120, 0.3);
+}
+
+/* Warenkorb Modal Styles */
+.cart-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.cart-modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cart-header {
+  background: linear-gradient(135deg, #ed3e78, #ff6b9d);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header h2 {
+  margin: 0;
+  font-family: 'Majestic', sans-serif;
+  font-weight: 100;
+  font-size: 32px;
+  background: none;
+  color: white;
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+}
+
+.close-cart {
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.close-cart:hover {
+  transform: scale(1.2);
+}
+
+.cart-items {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.cart-total {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ed3e78;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.cart-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.clear-cart-btn, .checkout-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  font-family: 'IndieFlower', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.clear-cart-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.clear-cart-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+.checkout-btn {
+  background: linear-gradient(135deg, #ed3e78, #ff6b9d);
+  color: white;
+  flex: 1;
+}
+
+.checkout-btn:hover {
+  background: linear-gradient(135deg, #d63669, #ff5a8a);
+  transform: translateY(-2px);
+}
+
+h4 {
+  font-size: 24px;
+}
+
+.cart-item p {
+  font-size: px !important;
+}
+
+/* === ENDE WARENKORB STYLES === */
+
+/* Anpassungen für das Querformat */
+@media only screen and (orientation: landscape) {
+  /* Sektion */
+  section {
+    flex-direction: column; /* Ändert die Flex-Richtung von Spalte zu Zeile */
+    justify-content: center; /* Startet die Items von links */
+    height: 100vh; /* Stellt sicher, dass die Höhe 100% der Viewport-Höhe ist */
+    margin-left: 10vw;
+  }
+
+  /* Donutrad */
+  .grid-container {
+    top: 50%;
+    left: 0%; /* Positioniert das Rad am linken Rand */
+    transform: translate(-50%, -50%); /* Verschiebt es vertikal in die Mitte */
+    width: 70vw; /* Nimmt 50% der Viewport-Breite ein */
+    height: 140vh; /* Nimmt die gesamte Viewport-Höhe ein */
+    overflow: visible; /* Ändere overflow zu visible */
+  }
+
+  /* Donut-Name und Donut-Info */
+  .donut-name, .donut-info {
+    width: 50vw; /* Nimmt 50% der Viewport-Breite ein */
+    text-align: center; /* Text linksbündig ausrichten */
+    height: auto;
+  }
+
+  /* Schriftgrößen anpassen, falls nötig */
+  h1 {
+    font-size: clamp(24px, 4vw, 60px);
+    margin-top: 40px; /* Entfernt oberen Margin */
+  }
+
+  h2 {
+    font-size: clamp(20px, 3vw, 40px);
+    width: auto;
+  }
+
+  p {
+    font-size: clamp(16px, 2vw, 24px);
+  }
+
+  .grid-item img {
+    width: 120%;
+    height: 120%;
+  }
+
+  .swipe-and-pick {
+    position: absolute;
+    flex-direction: column-reverse;
+    align-self: end;
+    margin-right: 8%;
+    transform: rotate(-45deg);
+  }
+
+  /* Warenkorb Modal für Querformat anpassen */
+  .cart-modal-content {
+    margin: 2% auto;
+    max-height: 90vh;
+  }
+}

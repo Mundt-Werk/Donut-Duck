@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donutrad Layout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+</head>
+<body class="index-page">
+    <!-- Warenkorb Button rechts oben -->
+    <div class="top-right-cart">
+        <div class="cart-icon-container">
+            <img src="./icons/shop.svg" alt="Warenkorb öffnen" class="cart-icon">
+            <div class="cart-badge">0</div>
+        </div>
+    </div>
+
+    <section>
+        <div class="donut-name">
+            <h1 id="donut-name"></h1> <!-- Hier wird der Name dynamisch eingefügt -->
+        </div>
+
+        <div class="swipe-and-pick">
+            <img src="./icons/swipe.png" alt="">
+            <p>swipe and pick</p>
+            <div class="add-to-cart-container">
+                <img src="./icons/add-shop.svg" alt="In den Warenkorb" class="add-to-cart-btn">
+            </div>
+        </div>
+        
+        <div class="donut-info">
+            <h2>Rohling</h2>
+            <p id="rohling"></p>
+            <h2>Füllung</h2>
+            <p id="füllung"></p>
+            <h2>Glasur</h2>
+            <p id="glasur"></p>
+            <h2>Topping</h2>
+            <p id="topping"></p>
+            <!-- Preis hinzufügen -->
+            <h2>Preis</h2>
+            <p id="donut-price"></p>
+        </div>
+    </section>
+
+    <div class="grid-container">
+        <div class="grid-item" id="grid-item-1"></div>
+        <div class="grid-item" id="grid-item-2"></div>
+        <div class="grid-item" id="grid-item-3"></div>
+        <div class="grid-item" id="grid-item-4"></div>
+        <div class="grid-item" id="grid-item-5"></div>
+        <div class="grid-item" id="grid-item-6"></div>
+        <div class="grid-item" id="grid-item-7"></div>
+        <div class="grid-item" id="grid-item-8"></div>
+        <div class="grid-item" id="grid-item-9"></div>
+    </div>
+
+    <!-- Warenkorb Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Warenkorb</h2>
+                <span id="close-cart" class="close-cart">&times;</span>
+            </div>
+            <div id="cart-items" class="cart-items">
+                <!-- Dynamisch gefüllt -->
+            </div>
+            <div class="cart-footer">
+                <div id="cart-total" class="cart-total">Gesamt: €0.00</div>
+                <div class="cart-buttons">
+                    <button id="clear-cart" class="clear-cart-btn">Warenkorb leeren</button>
+                    <button class="checkout-btn">Zur Kasse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="donuts.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
